@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { NgFor } from '@angular/common';
-import { CustomCardComponent } from '../../custom-card/custom-card.component';
+import { CustomCardComponent } from '../../components/custom-card/custom-card.component';
 
 @Component({
   selector: 'app-card-sandbox-page',
-  imports: [CustomCardComponent, NgFor],
+  imports: [CustomCardComponent],
   templateUrl: './card-sandbox-page.component.html',
   styleUrl: './card-sandbox-page.component.css'
 })

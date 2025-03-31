@@ -3,6 +3,11 @@
     <h1 class="py-2 pl-4 text-center text-xl">Card snadbox</h1>
   </div>
   <div class="px-8 py-4">
-    <custom-card *ngFor="let n of nums"/>
+    @for(n of nums; track $index) {
+      <div>
+        <span>{{ $index }}</span>
+        <custom-card/>
+      </div>
+    }
   </div>
 </div>
