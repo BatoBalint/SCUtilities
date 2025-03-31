@@ -1,6 +1,18 @@
-<div class="w-fit rounded-xl bg-zinc-600 p-4 space-y-2 border-1 border-neutral-300 drop-shadow-xl m-2">
-  <h1 class="text-xl">The card</h1>
-  <p>Haiii</p>
-  <input class="block bg-cyan-900 p-2 rounded-md text-white border-neutral-200 border-1" placeholder="Name" type="text" />
-  <input class="block bg-cyan-900 p-2 rounded-md text-white border-neutral-200 border-1" placeholder="Age" type="number" />
+<div
+  class="w-fit rounded-xl bg-zinc-600 p-4 gap-2 border-1 border-neutral-300 drop-shadow-xl m-2 grid grid-cols-{{
+    card.maxCol + 1
+  }}"
+>
+  @for (row of card.layout.rows; track row) {
+    @for (field of row; track field) {
+      <div class="box col-start-{{ field.col + 1 }}">
+        <input
+          class="block rounded-md border-1 border-neutral-200 bg-cyan-900 p-2 text-white"
+          [placeholder]="field.placeholder"
+          [type]="field.type"
+          [value]="field.value"
+        />
+      </div>
+    }
+  }
 </div>

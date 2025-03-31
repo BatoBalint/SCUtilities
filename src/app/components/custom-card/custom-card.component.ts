@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Card } from '../../models/card.model';
 
 @Component({
   selector: 'custom-card',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './custom-card.component.css'
 })
 export class CustomCardComponent {
-
+  card: Card = Card.multiFieldCard;
 }

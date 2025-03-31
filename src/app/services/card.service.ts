@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Card } from '../models/card.model';
 import { BehaviorSubject } from 'rxjs';
+import { CardLayout } from '../models/card-layout.model';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +33,7 @@ export class CardService {
   private loadCards() {
     let cardsAsJSON = localStorage.getItem(this.CARD_STORAGE_NAME);
     if (cardsAsJSON) {
-      this.cards = Object.assign(new Card(), JSON.parse(cardsAsJSON));
+      this.cards = Object.assign(new Card(new CardLayout()), JSON.parse(cardsAsJSON));
       this.cardsSubject.next(this.cards);
     }
   }

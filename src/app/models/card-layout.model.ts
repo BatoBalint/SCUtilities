@@ -1,10 +1,10 @@
 import { CardField } from "./card-field.model";
 
 export class CardLayout {
-  rows: CardField[][] = [];
+  rows: CardField[][];
 
-  constructor() {
-
+  constructor(defaultRows: CardField[][] = []) {
+    this.rows = defaultRows;
   }
 
   add(field: CardField) {
@@ -13,6 +13,7 @@ export class CardLayout {
 
   addToRow(field: CardField, rowInd: number) {
     if (rowInd < 0 || rowInd >= this.rows.length) return;
+    field.col = this.rows[rowInd].length;
     this.rows[rowInd].push(field);
   }
 }
