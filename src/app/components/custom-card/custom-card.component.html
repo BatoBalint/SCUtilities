@@ -1,7 +1,9 @@
-<div
-  class="w-fit rounded-xl bg-zinc-600 p-4 gap-2 border-1 border-neutral-300 drop-shadow-xl m-2 grid grid-cols-{{
+<div #cardTag
+  class="w-fit absolute rounded-xl hover:cursor-grabbing bg-zinc-600 p-4 gap-2 border-1
+  border-neutral-300 drop-shadow-xl m-2 grid grid-cols-{{
     card.maxCol + 1
-  }}"
+  }} draggable-card"
+  (mousedown)="mousedown($event)"
 >
   @for (row of card.layout.rows; track row) {
     @for (field of row; track field) {

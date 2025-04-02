@@ -13,7 +13,7 @@ export class Card {
     new CardLayout([
       [
         new CardField(FieldType.number, 'The number filed', 0),
-        new CardField(FieldType.text, 'The text field', 2),
+        new CardField(FieldType.text, 'The text field', 1),
       ],
       [new CardField(FieldType.number, 'The lower number', 1)],
     ]),
