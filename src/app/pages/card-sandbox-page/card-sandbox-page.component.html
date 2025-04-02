@@ -3,8 +3,8 @@
     <h1 class="py-2 pl-4 text-center text-xl">Card sandbox</h1>
   </div>
   <div class="px-8 py-4">
-    @for(n of nums; track $index) {
-      <custom-card/>
+    @for(c of cards; track $index) {
+      <custom-card [card]="c" (grabbed)="updateZIndex(c)"/>
     }
   </div>
 </div>

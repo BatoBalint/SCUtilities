@@ -16,6 +16,7 @@ export class CardField {
   }
 }
 
+// TODO: add more types for custom enums and titles
 export enum FieldType {
   number = 'number',
   text = 'text'
