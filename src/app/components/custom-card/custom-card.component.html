@@ -7,13 +7,32 @@
 >
   @for (row of card.layout.rows; track row) {
     @for (field of row; track field) {
-      <div class="box col-start-{{ field.col + 1 }}">
-        <input
-          class="block rounded-md border-1 border-neutral-200 bg-cyan-900 p-2 text-white"
-          [placeholder]="field.placeholder"
-          [type]="field.type"
-          [value]="field.value"
-        />
+      <div class="box col-start-{{ field.col + 1 }} col-span-{{ field.colspan }} w-full">
+        <!-- title type -->
+        @if (field.type == 'title') {
+          <h1 class="text-2xl">{{ field.placeholder }}</h1>
+        }
+        <!-- empty type -->
+        @else if (field.type == 'empty') {
+          <div class="w-full"></div>
+        }
+        <!-- enum type -->
+        @else if (field.type == 'userenum') {
+          <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            @for (opt of field.userenum.values; track $index) {
+              <option value="{{ opt }}">{{ opt }}</option>
+            }
+          </select>
+        }
+        <!-- text/number input type -->
+        @else {
+          <input
+            class="block rounded-md border-1 border-neutral-200 bg-cyan-900 p-2 text-white w-full"
+            [placeholder]="field.placeholder"
+            [type]="field.type"
+            [value]="field.value"
+          />
+        }
       </div>
     }
   }

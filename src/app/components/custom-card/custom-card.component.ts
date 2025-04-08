@@ -1,4 +1,4 @@
-import { Component, ElementRef, Renderer2, ViewChild, AfterViewInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, ElementRef, Renderer2, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { Card } from '../../models/card.model';
 
 @Component({
@@ -30,7 +30,7 @@ export class CustomCardComponent {
     // save initial position
     this.offsetX = this.card.pos.x;
     this.offsetY = this.card.pos.y;
-    
+
     // set initial position
     this.renderer.setStyle(this.cardRef.nativeElement, 'transform', `translate(${this.offsetX}px, ${this.offsetY}px)`);
   }

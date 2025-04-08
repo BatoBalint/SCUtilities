@@ -21,19 +21,19 @@ export class CardSandboxPageComponent {
 
       switch (n) {
         case 0:
-          c = Card.emptyCard();
+          c = Card.titledCard();
           break;
         case 1:
           c = Card.multiFieldCard();
           break;
         case 2:
-          c = Card.oneNumberCard();
+          c = Card.enumCard();
           break;
         default:
           c = Card.oneStringCard();
           break;
       }
-      
+
       c.pos = { x: 100, y: i * 100 + 50};
       this.cards.push(c);
     }
