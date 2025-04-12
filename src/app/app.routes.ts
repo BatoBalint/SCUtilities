@@ -1,13 +1,13 @@
 import { Routes } from '@angular/router';
-import { PageNotFoundComponentComponent } from './pages/page-not-found-component/page-not-found-component.component';
-import { LandingPageComponentComponent } from './pages/landing-page-component/landing-page-component.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { AssetsPageComponent } from './pages/assets-page/assets-page.component';
 
 export const routes: Routes = [
   {
     path: '',
     title: 'SCUtilities',
-    component: LandingPageComponentComponent,
+    component: LandingPageComponent
   },
   {
     path: 'assets',
@@ -17,7 +17,7 @@ export const routes: Routes = [
   {
     path: '404',
     title: 'Page not found',
-    component: PageNotFoundComponentComponent,
+    component: PageNotFoundComponent,
   },
   {
     path: '**',
