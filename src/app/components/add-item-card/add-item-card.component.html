@@ -1,0 +1,24 @@
+<div
+  class="card flex h-full w-full items-center justify-center gap-y-2 border-2 border-slate-600 px-2 py-3 shadow-xl"
+>
+  <div class="join w-full">
+    <input
+      type="text"
+      placeholder="Item name"
+      class="input join-item input-ghost"
+      [formControl]="item"
+      list="commodities"
+    />
+    <input
+      type="button"
+      value="+"
+      class="join-item btn btn-primary text-2xl font-bold"
+      (click)="save()"
+    />
+  </div>
+</div>
+<datalist id="commodities">
+  @for (commodity of commodities; track commodity) {
+    <option>{{ commodity.name }}</option>
+  }
+</datalist>

@@ -1,0 +1,84 @@
+<div class="flex w-screen">
+  <div class="h-screen w-1/4 rounded border border-slate-500 min-xl:w-1/8">
+    <div class="join w-full">
+      <input
+        type="text"
+        list="locations"
+        name="location"
+        (keyup)="selectLocation($event)"
+        [formControl]="selectedLocationName"
+        class="input input-sm .ng-invalid w-3/4"
+      />
+      <input
+        type="button"
+        value="?"
+        class="btn btn-sm w-1/4"
+        (click)="selectLocation($event)"
+      />
+    </div>
+    <datalist id="locations">
+      @for (location of locations; track location) {
+        <option [value]="location"></option>
+      }
+    </datalist>
+    <div>
+      @for (location of activeLocations; track location) {
+        <div
+          class="join group w-full justify-between"
+          [class]="{ 'bg-green-800': location === selectedLocationName.value }"
+        >
+          <fieldset class="fieldset join-item w-full p-1">
+            <label class="fieldset-label">
+              <input
+                type="radio"
+                [name]="location"
+                class="hidden"
+                (click)="selectLocation($event)"
+              />
+              {{ location }}
+            </label>
+          </fieldset>
+          <button
+            (click)="deleteLocation(location)"
+            class="group-hover:text-error join-item w-fit cursor-pointer bg-none text-transparent"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              class="size-4"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14Zm2.78-4.22a.75.75 0 0 1-1.06 0L8 9.06l-1.72 1.72a.75.75 0 1 1-1.06-1.06L6.94 8 5.22 6.28a.75.75 0 0 1 1.06-1.06L8 6.94l1.72-1.72a.75.75 0 1 1 1.06 1.06L9.06 8l1.72 1.72a.75.75 0 0 1 0 1.06Z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      }
+    </div>
+  </div>
+  <div class="w-3/4 rounded border border-slate-500 min-xl:w-7/8">
+    @if (
+      selectedLocationName.value != undefined && selectedLocationName.valid
+    ) {
+      <div
+        class="grid min-sm:grid-cols-2 min-md:grid-cols-3 min-lg:grid-cols-4 min-xl:grid-cols-5 min-2xl:grid-cols-6"
+      >
+        @for (item of selectedLocationInventory; track $index) {
+          <item-card
+            [itemName]="item[0]"
+            [itemCount]="item[1]"
+            [location]="selectedLocationName.value"
+            [changeAmount]="changeAmount"
+          />
+        }
+        <add-item-card [location]="selectedLocationName.value"></add-item-card>
+      </div>
+      <div class="inline-flex w-full items-center justify-center"></div>
+    } @else {
+      <p>Select an inventory on the left</p>
+    }
+  </div>
+</div>

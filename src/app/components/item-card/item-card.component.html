@@ -1,0 +1,39 @@
+<div
+  class="card group flex min-w-50 items-center gap-y-2 border-2 border-slate-600 px-2 py-3 shadow-xl"
+>
+  <button
+    (click)="deleteItem()"
+    class="cursor-pointer hover:text-error absolute top-1 right-1 text-transparent group-hover:text-error bg-none"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 16 16"
+      fill="currentColor"
+      class="size-4"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14Zm2.78-4.22a.75.75 0 0 1-1.06 0L8 9.06l-1.72 1.72a.75.75 0 1 1-1.06-1.06L6.94 8 5.22 6.28a.75.75 0 0 1 1.06-1.06L8 6.94l1.72-1.72a.75.75 0 1 1 1.06 1.06L9.06 8l1.72 1.72a.75.75 0 0 1 0 1.06Z"
+        clip-rule="evenodd"
+      ></path>
+    </svg>
+  </button>
+  <p class="text-center text-lg font-semibold">{{ itemName() }}</p>
+  <div class="join gap-x-4 rounded">
+    <button
+      class="btn btn-error btn-sm join-item w-14 rounded-l text-2xl font-bold"
+      (mousedown)="decrement($event)"
+    >
+      -{{ changeAmount() }}
+    </button>
+    <p class="join-item text-center text-xl font-semibold">
+      {{ itemCount() }}
+    </p>
+    <button
+      class="btn btn-success btn-sm join-item w-14 rounded-r text-2xl font-bold"
+      (click)="increment()"
+    >
+      +{{ changeAmount() }}
+    </button>
+  </div>
+</div>
